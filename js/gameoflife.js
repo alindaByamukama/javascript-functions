@@ -75,12 +75,27 @@ const printCells = (state) => {
   return accumulator;
 };
 
-/*uses the printCell and corners functions completed previously 
+/*printCells uses the printCell and corners functions completed previously 
 to build a string representation of the game state ... */
 
-const getNeighborsOf = ([x, y]) => {};
+const getNeighborsOf = ([x, y]) => [
+  [x-1, y+1], [x, y+1], [x+1, y+1],
+  [x-1, y],             [x+1, y],
+  [x-1, y-1], [x, y-1], [x+1, y-1]
+];
 
-const getLivingNeighbors = (cell, state) => {};
+//getNeighbors returns an array containing all of the neighbors of a given cell
+// a cell has eight neighbors ~ I have no idea about this function
+
+const getLivingNeighbors = (cell, state) => {
+  //getNaighborsOf finds ALL the cells neighbors 
+  //use the contains func to filter down to the living neighbors
+  //use bind state to the this vlaue of the contains function
+  return getNeighborsOf(cell).filter((n) => contains.bind(state)(n));
+};
+
+// getLivingNeighbors returns the living neighbors of a given cell within a given game state
+// 
 
 const willBeAlive = (cell, state) => {};
 
