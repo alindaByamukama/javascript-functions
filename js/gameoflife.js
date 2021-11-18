@@ -1,7 +1,8 @@
 function seed() {
   return Array.prototype.slice.call(arguments);
 }
-/*The arguments object is not an Array. 
+/*
+The arguments object is not an Array. 
 It is similar, but lacks all Array properties except length.
 However, it can be converted to a real Array:
 var args = Array.prototype.slice.call(arguments);
@@ -12,7 +13,13 @@ let args = Array.from(arguments);
 let args = [...arguments];
 */
 
-function same([x, y], [j, k]) {}
+function same([x, y], [j, k]) {
+  return x === j && y === k;
+}
+/*
+check if x axis is equal and y axis is equal 
+then return a boolean indicating two 'cells' are the same
+*/
 
 // The game state to search for `cell` is passed as the `this` value of the function.
 function contains(cell) {}
