@@ -95,9 +95,21 @@ const getLivingNeighbors = (cell, state) => {
 };
 
 // getLivingNeighbors returns the living neighbors of a given cell within a given game state
-// 
 
-const willBeAlive = (cell, state) => {};
+const willBeAlive = (cell, state) => {
+  const livingNeighbors = getLivingNeighbors(cell, state);
+  return (
+    //a cell is alive IF it has three living neighbors
+    livingNeighbors.length === 3 ||
+    //OR is currently alive and has two living neighbors
+    (contains.call(state,cell) && livingNeighbors.length === 2)
+    //the contains functions determines if the cell is currently alive
+    //it uses the call method to supply the current game state
+  );
+};
+
+//willBeALive calculates if a given cell will be alive in the next game state
+//Use the function getLivingNeighbors completed previously to determine how many living neighbors the cell currently has
 
 const calculateNext = (state) => {};
 
