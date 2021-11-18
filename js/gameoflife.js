@@ -1,4 +1,16 @@
-function seed() {}
+function seed() {
+  return Array.prototype.slice.call(arguments);
+}
+/*The arguments object is not an Array. 
+It is similar, but lacks all Array properties except length.
+However, it can be converted to a real Array:
+var args = Array.prototype.slice.call(arguments);
+// Using an array literal is shorter than above but allocates an empty array
+var args = [].slice.call(arguments);
+let args = Array.from(arguments);
+// or
+let args = [...arguments];
+*/
 
 function same([x, y], [j, k]) {}
 
