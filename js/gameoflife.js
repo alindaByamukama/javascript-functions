@@ -16,15 +16,25 @@ let args = [...arguments];
 function same([x, y], [j, k]) {
   return x === j && y === k;
 }
-/*
-check if x axis is equal and y axis is equal 
-then return a boolean indicating two 'cells' are the same
-*/
+/*check if x axis is equal and y axis is equal 
+then return a boolean indicating two 'cells' are the same*/
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) {}
+function contains(cell) {
+  return this.some((c) => same(c, cell))
+}
 
-const printCell = (cell, state) => {};
+/*test if the cell is alive in the past game state 
+using the some() to test if the game state contains a cell that is the same as the past cell*/
+
+const printCell = (cell, state) => {
+  return contains.call(state, cell) ? "\u25A3": "\u25A2";
+};
+
+/*printCell return a string representation of a cell state, 
+use a ternary operator to check if game state contains the cell and return 
+the unicode character for a white square with small black square 
+and if otherwise returns unicode char white square with rounded corners*/
 
 const corners = (state = []) => {};
 
