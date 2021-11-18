@@ -36,7 +36,25 @@ use a ternary operator to check if game state contains the cell and return
 the unicode character for a white square with small black square 
 and if otherwise returns unicode char white square with rounded corners*/
 
-const corners = (state = []) => {};
+const corners = (state = []) => {
+  if (state.length === 0) {
+    return {
+      topRight: [0,0],
+      bottomLeft: [0,0]
+    }
+  }
+
+  const xs = state.map(([x, _]) => x);
+  const ys = state.map(([_, y]) => y);
+  return {
+    topRight: [Math.max(...xs), Math.max(...ys)],
+    bottomLeft: [Math.min(...xs), Math.min(...ys)]
+  }
+};
+
+/*function corners calculates the top-right and bottom-left coordinates of 
+the smallest rectangle that contains all living cells anf if no argument is passed, 
+the argument should default to an empty game state ([]) using a default parameter*/
 
 const printCells = (state) => {};
 
