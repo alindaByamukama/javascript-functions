@@ -56,7 +56,27 @@ const corners = (state = []) => {
 the smallest rectangle that contains all living cells anf if no argument is passed, 
 the argument should default to an empty game state ([]) using a default parameter*/
 
-const printCells = (state) => {};
+const printCells = (state) => {
+  const { bottomLeft, topRight } = corners(state);
+  //calculate the corners
+  let accumulator = "";
+  //loop throught grid rows from top to bottom
+  for (let y = topRight[1]; y y >= bottomLeft[1]; y--) {
+    let row = [];
+    //for each row loop through grid columns from left to right
+    for (let x = bottomLeft[0]; x <= topRight[0]; x++) {
+      //convert each cell to a string using printCell function
+      row.push(printCell([x,y], state));
+    }
+    //print each row and add it to the accumulaotr variable
+    accumulator += row.join(" ") + "\n";
+  }
+  //then return the accumulator
+  return accumulator;
+};
+
+/*uses the printCell and corners functions completed previously 
+to build a string representation of the game state ... */
 
 const getNeighborsOf = ([x, y]) => {};
 
